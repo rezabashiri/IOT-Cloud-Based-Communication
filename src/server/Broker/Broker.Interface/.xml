@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Broker.Interface</name>
+    </assembly>
+    <members>
+        <member name="T:Broker.Interface.Protos.MachineReflection">
+            <summary>Holder for reflection information generated from Protos/machine.proto</summary>
+        </member>
+        <member name="P:Broker.Interface.Protos.MachineReflection.Descriptor">
+            <summary>File descriptor for Protos/machine.proto</summary>
+        </member>
+        <member name="T:Broker.Interface.Protos.GetMachinesReply">
+            <summary>
+            The response message containing the registered machines.
+            </summary>
+        </member>
+        <member name="F:Broker.Interface.Protos.GetMachinesReply.MachinesFieldNumber">
+            <summary>Field number for the "machines" field.</summary>
+        </member>
+        <member name="T:Broker.Interface.Protos.Machine">
+            <summary>
+            Service to manage machines
+            </summary>
+        </member>
+        <member name="P:Broker.Interface.Protos.Machine.Descriptor">
+            <summary>Service descriptor</summary>
+        </member>
+        <member name="T:Broker.Interface.Protos.Machine.MachineBase">
+            <summary>Base class for server-side implementations of Machine</summary>
+        </member>
+        <member name="M:Broker.Interface.Protos.Machine.MachineBase.GetMachines(Broker.Interface.Protos.GetMachinesRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Get all machines
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Broker.Interface.Protos.Machine.BindService(Broker.Interface.Protos.Machine.MachineBase)">
+            <summary>Creates service definition that can be registered with a server</summary>
+            <param name="serviceImpl">An object implementing the server-side handling logic.</param>
+        </member>
+        <member name="M:Broker.Interface.Protos.Machine.BindService(Grpc.Core.ServiceBinderBase,Broker.Interface.Protos.Machine.MachineBase)">
+            <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
+            Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
+            <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
+            <param name="serviceImpl">An object implementing the server-side handling logic.</param>
+        </member>
+        <member name="T:Broker.Interface.Protos.TypesReflection">
+            <summary>Holder for reflection information generated from Protos/types.proto</summary>
+        </member>
+        <member name="P:Broker.Interface.Protos.TypesReflection.Descriptor">
+            <summary>File descriptor for Protos/types.proto</summary>
+        </member>
+        <member name="F:Broker.Interface.Protos.MachineType.IdFieldNumber">
+            <summary>Field number for the "id" field.</summary>
+        </member>
+        <member name="F:Broker.Interface.Protos.MachineType.NameFieldNumber">
+            <summary>Field number for the "name" field.</summary>
+        </member>
+        <member name="F:Broker.Interface.Protos.MachineType.MachineStatusFieldNumber">
+            <summary>Field number for the "machine_status" field.</summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "Broker.Interface.Protos";
+
+package machines;
+
+message MachineType {
+   string id =1;
+   string name = 2;
+   string machine_status = 3;
+}

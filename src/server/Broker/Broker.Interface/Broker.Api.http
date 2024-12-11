@@ -1,0 +1,7 @@
+@Broker.Api_HostAddress = http://localhost:5277
+
+GET {{Broker.Interfaxe_HostAddress}}/api/Machines
+Content-Type: application/json
+Accept: application/json
+
+###

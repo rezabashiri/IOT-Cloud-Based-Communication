@@ -1,0 +1,20 @@
+syntax = "proto3";
+import "Protos/types.proto";
+
+option csharp_namespace = "Broker.Interface.Protos";
+
+package machines;
+
+// Service to manage machines
+ service Machine {
+   // Get all machines
+   rpc GetMachines (GetMachinesRequest) returns (GetMachinesReply);
+}
+
+ message GetMachinesRequest {
+ }
+
+// The response message containing the registered machines.
+message GetMachinesReply {
+  repeated MachineType machines = 1;
+}

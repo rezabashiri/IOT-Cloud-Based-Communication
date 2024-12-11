@@ -1,0 +1,59 @@
+﻿services:
+  proxy:
+    image: proxy
+    build:
+      context: .
+      dockerfile: Proxy/Dockerfile
+    ports:
+      - "5001:5001"
+      - "5002:5002"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5001;https://+:5002
+
+  broker.interface:
+    image: broker.interface
+    build:
+      context: .
+      dockerfile: Broker/Broker.interface/Dockerfile
+    ports:
+      - "4001:4001"
+      - "4002:4002"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:4001;https://+:4002
+
+    depends_on:
+      broker:
+        condition: service_healthy
+
+  broker:
+    image: hivemq/hivemq4
+    container_name: hivemq
+    ports:
+      - "1883:1883" # MQTT protocol
+      - "8080:8080" # Web UI
+    healthcheck:
+      test: [ "CMD", "echo", "\"\"", ">", "/dev/tcp/127.0.0.1/1883" ]
+      interval: 30s  # Check every 30 seconds
+      timeout: 5s    # Timeout after 5 seconds
+      retries: 3     # Mark as unhealthy after 3 failed attempts
+    volumes:
+      - hivemq-data:/opt/hivemq/data
+
+  simulator:
+    image: plc.simulator
+    build:
+      context: .
+      dockerfile: PLC Simulator/Dockerfile
+    depends_on:
+      - broker.interface
+
+
+volumes:
+  rabbitmq-data:
+  hivemq-data:
+
+
+
+
